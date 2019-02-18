@@ -1858,6 +1858,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -1866,6 +1867,14 @@ __webpack_require__.r(__webpack_exports__);
       statuses: []
     };
   },
+  filters: {
+    ago: function ago(date) {
+      return moment__WEBPACK_IMPORTED_MODULE_0___default.a.utc(date).fromNow();
+    },
+    capitalize: function capitalize(value) {
+      return value.toUpperCase();
+    }
+  },
   created: function created() {
     var _this = this;
 
@@ -1873,11 +1882,6 @@ __webpack_require__.r(__webpack_exports__);
     _models_Status__WEBPACK_IMPORTED_MODULE_1__["default"].all(function (statuses) {
       return _this.statuses = statuses;
     });
-  },
-  methods: {
-    postedOn: function postedOn(status) {
-      return moment__WEBPACK_IMPORTED_MODULE_0___default.a.utc(status.created_at).fromNow();
-    }
   },
   mounted: function mounted() {
     console.log('HomeComponent mounted.');
@@ -20117,8 +20121,10 @@ var render = function() {
               _c("p", [
                 _vm._v(
                   "\n                        " +
-                    _vm._s(_vm.postedOn(status)) +
-                    "\n                    "
+                    _vm._s(
+                      _vm._f("capitalize")(_vm._f("ago")(status.created_at))
+                    ) +
+                    "\n                        "
                 )
               ])
             ]),
