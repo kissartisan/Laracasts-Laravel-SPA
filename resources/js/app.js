@@ -2,7 +2,9 @@ window.axios = require('axios');
 
 // require('./bootstrap');
 import VueRouter from 'vue-router';
+import Form from './utilities/Form';
 
+window.Form = Form;
 window.Vue = require('vue');
 Vue.use(VueRouter);
 
